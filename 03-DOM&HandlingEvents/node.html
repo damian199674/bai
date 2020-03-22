@@ -5,9 +5,27 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
+		<style>
+			table {
+			  border-collapse: collapse;
+			  margin: auto;
+			}
+		
+			table, th, td {
+			  border: solid black;
+			}
+		
+			th {
+			  width: 120px;
+			  height: 30px;
+			}
+		  </style>
 		<script>
-			// a JavaScript code here ...
+			let table = document.createElement("TABLE");
+			table.innerHTML = "<tr><th>1</th><th>2</th></tr><tr><th>3</th><th>4</th></tr>";
 			
+			document.body.appendChild(table);
+
 		</script>
 	</body>
 </html>

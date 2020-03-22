@@ -4,7 +4,7 @@
 		<title>Typing test</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body id="bddy">
 		<h1>How fast are your fingers?</h1>
 		<h3>You have 30 seconds. Just start typing...</h3>
 		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
@@ -20,11 +20,20 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
+		<textarea rows="15" cols="50" id="text" onkeypress="timer()"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
-			
+			function summary(){
+				document.getElementById("text").readOnly  = true;
+				let info = document.createElement("p"); 
+				let chars_length = document.getElementById("text").value.length;
+				let words_length = document.getElementById("text").value.split(' ').length;
+            	info.innerHTML = "<b>CONGRATULATION</b><br>CHARACTERS: "+ chars_length+"<br>WORDS: "+words_length;           
+            	document.body.appendChild(info);
+			}
+			function timer(){
+				setTimeout(summary, 3000);
+			}
 		</script>
 		
 	</body>

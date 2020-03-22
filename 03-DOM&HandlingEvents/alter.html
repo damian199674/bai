@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body id="body" ondblclick="changeBackground()">
+		<h1 onclick="addPart(this)">Another Brick in the Wall</h1>
+		<h3 onclick="displayBandDescription()">Pink Floyd</h3>
+		<p id="lyrics" onclick="displayItalics()" oncopy="popupMessage()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,13 +15,27 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p id="band_description" style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
-			
+			function addPart(element){
+				element.textContent = "Another Brick in the Wall (Part2)";
+			} 
+			function displayBandDescription(){
+				document.getElementById("band_description").style.visibility = "visible";
+			}
+			function displayItalics() {
+  				document.getElementById("lyrics").style.fontStyle = "italic";
+			}
+			function changeBackground(){
+				document.getElementById("body").style.backgroundColor="yellow";
+			}
+			function popupMessage(){
+				window.alert("You can't copy!");
+			}
+			JESZCZE JEDNO ZADANIE!!!!!!
 		</script>
 	</body>
 </html>

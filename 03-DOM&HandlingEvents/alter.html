@@ -15,7 +15,7 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p id="band_description" style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p id="band_description" style="visibility: hidden;" onclick="displayImage()">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
@@ -35,7 +35,12 @@
 			function popupMessage(){
 				window.alert("You can't copy!");
 			}
-			JESZCZE JEDNO ZADANIE!!!!!!
+			function displayImage(){
+				let band_img = document.createElement("img");
+				band_img.src = "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg";
+
+				body.appendChild(band_img);
+			}
 		</script>
 	</body>
 </html>

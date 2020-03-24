@@ -4,6 +4,9 @@
 <head>
     <title>Shopping List</title>
     <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -26,6 +29,12 @@
             product.append(product_text);           
             document.getElementById("list").appendChild(product);
         }
+
+        $(function(){
+            $("li").dblclick(function(){
+                $(this).remove();
+            })
+        })
         
     </script>
 </body>

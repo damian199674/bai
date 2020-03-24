@@ -21,18 +21,18 @@
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
 		<textarea rows="15" cols="50" id="text" onkeypress="timer()"></textarea><br>
-		
+		<p id="typing-results"></p>
 		<script>
 			function summary(){
 				document.getElementById("text").readOnly  = true;
-				let info = document.createElement("p"); 
-				let chars_length = document.getElementById("text").value.length;
-				let words_length = document.getElementById("text").value.split(' ').length;
-            	info.innerHTML = "<b>CONGRATULATION</b><br>CHARACTERS: "+ chars_length+"<br>WORDS: "+words_length;           
-            	document.body.appendChild(info);
+				const chars_length = document.getElementById("text").value.length;
+				const words_length = document.getElementById("text").value.split(' ').length;
+				const typingResult=document.getElementById("typing-results");
+            	typingResult.innerHTML = "<b>CONGRATULATION</b><br>CHARACTERS: "+ chars_length+"<br>WORDS: "+words_length;           
+            
 			}
 			function timer(){
-				setTimeout(summary, 3000);
+				setTimeout(summary, 30000);
 			}
 		</script>
 		

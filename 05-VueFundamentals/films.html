@@ -2,8 +2,26 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style> table {
+      border-collapse: collapse;
+    }
+    
+    table, th, td {
+      border: 1px solid black;
+    }</style>
 </head>
 <body>
+  <div id='app'>
+    <table>
+      <tr>
+        <th v-for="headline in columns">{{ headline }}</th>
+      </tr>
+      <tr v-for="film in films">
+        <td v-for="attribute in columns" v-if="attribute==='budget'">${{film[attribute]}}</td>
+        <td v-else>{{film[attribute]}}</td>
+      </tr>
+    </table>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -33,10 +51,10 @@
             director: 'King Vidor',
             budget: 6000000
           }
-        ] 
+        ],
+        columns: ['title', 'year', 'director', 'budget'],
         }
-      }
-    });
+      });
   </script>
 </body>
 </html>

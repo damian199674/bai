@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style> table {
+        border-collapse: collapse;
+      }
+      
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
+</head>
+<body>
+  <div id="app"> 
+    <table>
+        <tr>
+            <th v-for="headline in columns">{{ headline }}</th>
+        </tr>
+        <tr v-for="rate in rates">
+            <td v-for="attribute in columns">{{rate[attribute]}}</td>
+        </tr>
+      </table>
+  </div>
+
+  <script>
+      function connect(){
+            var method = 'GET';
+            var URL = 'https://gist.githubusercontent.com/damian199674/1fe094ed7c500f03b82ffdac73a0c902/raw/007c42f3fc3a3a15e4aa0e356ee6bab9313983ee/personal_data.json'
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){display(this);};
+            xhr.open(method, URL);
+            xhr.send();
+        };
+
+        function display(r) {
+            if (r.status === 200 && r.readyState === 4) {
+                const personalData = JSON.parse(r.response);
+                document.getElementById("personalData").innerText = personalData.name + " " + personalData.surname;
+            }
+        };
+    var app = new Vue({
+      el: '#app',
+      data: {
+      rates: [],
+      columns: ['currency', 'code', 'mid']},
+
+        beforeCreate(){
+            var setRates = (data) => {this.rates = data};
+            var method = 'GET';
+            var URL = 'http://api.nbp.pl/api/exchangerates/tables/A/?format=json';
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = display;
+            xhr.responseType = 'json';
+            xhr.open(method, URL);
+            xhr.send();
+           
+       
+        
+        function display(){
+            if (this.readyState === 4 && this.status === 200) {
+              var rates = this.response[0].rates;
+              setRates(rates);
+        }
+        }},
+       
+
+    });
+  </script>
+
+</body>
+</html>

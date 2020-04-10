@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <title>Chart</title>
+    <canvas id="myChart" width="100" height="100"></canvas>
+    <script>
+         function connect(){
+            var method = 'GET';
+            var URL = 'http://api.nbp.pl/api/cenyzlota/last/10'
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){display(this);};
+            xhr.open(method, URL);
+            xhr.send();
+        };
+        function display(r) {
+            if (r.status === 200 && r.readyState === 4) {
+                const data = JSON.parse(r.response);
+                var ctx = document.getElementById('myChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                    labels: data.map((element) => element.data),
+                    datasets: [{
+                        backgroundColor: 'rgba(255, 255, 0, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        label: 'cena',
+                         borderColor: 'black',
+                         borderWidth: 1,
+                        data: data.map((element) => element.cena),
+                            }],
+                    },
+
+            });
+        }}
+
+        connect();
+
+    </script>
+</body>
+
+</html>

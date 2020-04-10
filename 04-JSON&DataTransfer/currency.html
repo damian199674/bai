@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CurrencyExchangeRates</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+
+    <script>
+      function add(cur) {
+        var xhr = new XMLHttpRequest(); 
+        var URL = 'http://api.nbp.pl/api/exchangerates/rates/A/'
+        xhr.open("GET", URL + cur  + '?format=json' );
+        xhr.onreadystatechange = function(){display(this, cur);};
+        xhr.send();
+       
+    }
+    function display(r, cur) {
+            if (r.status === 200 && r.readyState === 4) {
+                const exchangeRates = JSON.parse(r.response);
+            
+            let para = document.createElement("p");
+			para.innerHTML = cur + ' : ' + exchangeRates.rates[0].mid;
+			document.body.appendChild(para);
+
+
+            }
+        };
+
+        add("EUR");
+        add("USD");
+        add("GBP");
+        
+    </script>
+</body>
+</html>

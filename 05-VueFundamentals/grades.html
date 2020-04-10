@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      ul {
+        display: inline ;
+      }
+      li {
+        float: left;
+        margin: 0 10px;
+        list-style: none;
+      }
+      p { display: inline }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+      <ul>
+        <li>Student’s grades:</li>
+        <li v-for="item in grades">
+            {{ item }}
+        </li>
+      </ul>
+        <p><br>Average grade: {{ avg }}</p>
+    </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: { 
+        grades: [4, 5, 3, 2, 3, 5, 5, 2, 4]
+      },
+      computed: {
+         avg: function(){ 
+          var sum = 0;
+          for(var i = 0; i < this.grades.length; i++){
+            sum += this.grades[i]; 
+          }
+        return (sum/this.grades.length).toFixed(2)
+}}});
+  </script>
+</body>
+</html>

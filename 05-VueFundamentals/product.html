@@ -5,6 +5,17 @@
 </head>
 <body>
   <h1>Grades</h1>    
+  <div id="app">
+    <h2>RECEIPT</h2>
+    <p>-----------------</p>
+    <p>Product: {{product.name}}</p>
+    <p>Unit Price: {{product.unitPrice}} zł</p>
+    <p>Quantity: {{product.quantity}}</p>
+    <p>Amount: {{product.unitPrice*product.quantity}} zł</p>
+    <p>VAT Tax Rate: {{product.VAT}} %</p>
+    <p>=================</p>
+    <b>{{product.unitPrice * product.quantity * (100 + product.VAT) / 100 }}</b>
+  </div>
 
   <script>
     var app = new Vue({

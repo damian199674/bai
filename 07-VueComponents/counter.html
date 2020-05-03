@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <click-counter></click-counter>
+  </div>
+</body>
+<script>
+   Vue.component('click-counter', {
+      template: '<div>\
+      <h1>{{count}}</h1>\
+      <button @click="count++">+1</button>\
+      <button @click="count--">-1</button>\
+      </div>',
+      data() {
+        return {
+            count: 0
+        }
+    },
+});
+  new Vue({
+     el:'#app'
+  })
+</script>
+</html>

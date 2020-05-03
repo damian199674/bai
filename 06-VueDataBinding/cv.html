@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Curriculum vitae</h1>
+  <div id="app">
+    <span>Name:</span>
+    <input type="text" v-model="name">  <br/>
+    <span>Surname:</span>
+    <input type="text" v-model="surname">  <br/>
+    <span>Age: </span>
+    <input v-model.number=age><br>
+    <span>Sex: </span>
+    <input type="radio" id= "man" value="man"  v-model="sex">
+      <label for="man">Man</label>
+    <input type="radio" id= "woman" value="woman"  v-model="sex">
+      <label for="woman">Woman</label> <br/>
+    <span>Education: </span>
+    <select v-model="education">
+      <option value="Lack">Lack of education</option>
+      <option value="Primary"> Primary school</option>
+      <option value="Secondary">Secondary school</option>
+      <option value="College">College</option>
+      <option value="Bachelor">Bachelor</option>
+      <option value="Master">Master</option>
+      <option value="Doctor">Doctor</option>
+      <option value="Professor">Professor</option>
+    </select><br>
+    <input type="checkbox" id= "computer" value= "computer" v-model="skills">
+      <label for="computer">Computer skills</label><br/>
+    <input type="checkbox" id="driving" value="driving" v-model="skills">
+      <label for="driving">Driving license</label><br/>
+    <input type="checkbox" id= "creativity" value= "creativity" v-model="skills">
+      <label for="creativity">Creativity</label><br/>
+    <input type="checkbox" id= "teamwork" value= "teamwork" v-model="skills">
+      <label for="teamwork">Teamwork</label><br/>
+    <button v-on:click="save">Save</button>
+    <button v-on:click="load">Load</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        surname: '',
+        age: '',
+        sex: '',
+        education:'',
+        courses: [],
+      },
+      methods: {
+        save: function(){
+          localStorage.setItem("name", this.name);
+          localStorage.setItem("surname", this.surname);
+          localStorage.setItem("age", this.age);
+          localStorage.setItem("sex", this.sex);
+          localStorage.setItem("education", this.education);
+        },
+        load: function(){
+            this.name = localStorage.getItem("name");
+            this.surname = localStorage.getItem("surname");
+            this.age = localStorage.getItem("age");
+            this.sex = localStorage.getItem("sex");
+            this.education = localStorage.getItem("education");
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

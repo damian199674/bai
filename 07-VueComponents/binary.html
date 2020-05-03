@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <h4>Decimal = Binary</h4>
+    <binary v-bind:number="8"></binary>
+    <binary v-bind:number="170"></binary>
+    <binary v-bind:number="204"></binary>
+    <binary v-bind:number="3855 "></binary>
+  </div>
+</body>
+<script>
+   Vue.component('binary', {
+    props: {
+          number: Number
+        },
+      template:  '<div>\
+        {{number}}(10) = {{(this.number).toString(2)}}(2)\
+      <div>'
+    ,
+  
+});
+  new Vue({
+     el:'#app'
+  })
+</script>
+</html>

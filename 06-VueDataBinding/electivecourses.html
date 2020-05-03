@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>COURSES</h1>
+  <div id="app">
+    <input type="checkbox" id= "HD" value= "HD" v-model="courses"><label for="HD">Hurtownia Danych</label><br/>
+    <input type="checkbox" id="BAI" value="BAI" v-model="courses"><label for="BAI">Bogate aplikacje internetowe	</label><br/>
+    <input type="checkbox" id= "ZP" value= "ZP" v-model="courses"><label for="ZP">Zarządzanie procesowe</label><br/>
+    <input type="checkbox" id= "MD" value= "MD" v-model="courses"><label for="MD">Matematyka dyskretna</label><br/>
+    <input type="checkbox" id= "GK" value= "GK" v-model="courses"><label for="GK">Grafika komputerowa</label><br/><br/>
+    <p>You have chosen <b>{{ courses.length }} </b> courses!</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        courses: []
+      },
+    });
+  </script>
+
+</body>
+</html>

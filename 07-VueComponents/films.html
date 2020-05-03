@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <film1></film1>
+    <film2></film2>
+    <film3></film3>
+  </div>
+</body>
+<script>
+   Vue.component('film1', {
+      template: 
+      '<div>\
+        <h1>Title: Nietykalni</h1>\
+        <p>Director: Olivier Nakache </p>\
+        <p>Year: 2011</p>\
+      </div>'
+  });
+  Vue.component('film2', {
+      template: 
+      '<div>\
+        <h1>Title: Lista Schindlera</h1>\
+        <p>Director: Steven Spielberg</p>\
+        <p>Year: 1993</p>\
+      </div>'
+  });
+  Vue.component('film3', {
+      template: 
+      '<div>\
+        <h1>Title: Bogowie</h1>\
+        <p>Director: Łukasz Palkowski</p>\
+        <p>Year: 2014</p>\
+      </div>'
+  });
+  new Vue({
+     el:'#app'
+  })
+</script>
+</html>

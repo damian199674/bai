@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <api></api>
+  </div>  
+    <script>
+      Vue.component('api',{
+      template: '<div>\
+         <h1>GOLD PRICE</h1>\
+         price - date<br>\
+         {{price}} - {{date}}\
+        </div>',
+        data(){
+            return{
+                price: '',
+                date: ''
+            }
+        },
+        beforeCreate(){
+				var method = 'GET';
+				var URL = 'http://api.nbp.pl/api/cenyzlota/last/1/?format=json';
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){display(this);};
+				xhr.open(method, URL);
+				xhr.send();
+
+        const setPrice = (price) => { this.price = price; };
+			  const setDate = (date) => { this.date = date; };
+
+			    function display(r){
+				    if (r.readyState===4 && r.status===200){
+					    data = JSON.parse(r.response)
+              setPrice(data[0].cena)
+              setDate(data[0].data)
+					  }
+          }
+        }
+      })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>
